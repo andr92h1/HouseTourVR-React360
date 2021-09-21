@@ -1,6 +1,8 @@
 import React from 'react';
 import {
+  asset,
   AppRegistry,
+  Environment,
   StyleSheet,
   Text,
   View,
@@ -13,7 +15,18 @@ export default class HouseTourVR extends React.Component {
   state = {
 room: house.House.roomName,
 info: house.House.info,
-adjacentRooms: house.House.adjacentRooms,
+adjacentRooms: house.House.adjacentRooms
+  }
+
+  clickHandler(roomSelection) {
+this.setState ({
+  room: house[`${roomSelection}`].roomName,
+  info: house[`${roomSelection}`].info,
+  adjacentRooms: house[`${roomSelection}`].adjacentRooms
+
+})
+
+Environment.setBackgroundImage(asset(`./360_${house[`${roomSelection}`].img}`));
 
   }
 
@@ -23,7 +36,7 @@ let buttons = [];
 
 rooms.map(room => (
 buttons.push(
-  <VrButton key ={`${room}` + '-button'}>
+  <VrButton key ={`${room}` + '-button'} onClick ={() => this.clickHandler(room)}>
     <Text style = {{backgroundColor:'green'}}>{room}</Text>
   </VrButton>
 )

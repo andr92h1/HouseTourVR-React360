@@ -19,7 +19,13 @@ function init(bundle, parent, options = {}) {
   buttonsPanel.setAngle(
     -0.6,
     0.1
-  )
+  );
+
+   
+  r360.renderToSurface(
+    r360.createRoot('ConnectedButtons', { /* initial props */ }),
+    buttonsPanel
+  );
 
   const infoPanel = new Surface(  
     400, 
@@ -30,17 +36,11 @@ function init(bundle, parent, options = {}) {
    infoPanel.setAngle(
       0.6,
       0.1
-    )
+    );
 
-
-  
-  r360.renderToSurface(
-    r360.createRoot('Buttons', { /* initial props */ }),
-    buttonsPanel
-  );
 
   r360.renderToSurface(
-    r360.createRoot('InfoPanel', { /* initial props */ }),
+    r360.createRoot('ConnectedHouseInfoPanel', { /* initial props */ }),
     infoPanel
   );
 
